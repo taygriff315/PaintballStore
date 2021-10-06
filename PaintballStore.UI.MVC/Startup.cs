@@ -1,7 +1,5 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(PaintballStore.UI.MVC.Startup))]
 namespace PaintballStore.UI.MVC
 {
     public partial class Startup
