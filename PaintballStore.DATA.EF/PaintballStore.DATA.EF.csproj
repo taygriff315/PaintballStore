@@ -62,7 +62,6 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>Paintball.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Paintball.tt</DependentUpon>
     </Compile>
@@ -81,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Paintball.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PaintballMetaData\PaintballMetaData.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>Paintball.tt</DependentUpon>
     </Compile>

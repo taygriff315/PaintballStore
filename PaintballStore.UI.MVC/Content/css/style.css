@@ -140,9 +140,9 @@ header#header.fixed-top {
 #header .logo a {
   color: #fff;
 }
-#header .logo a span {
-  color: #ffc451;
-}
+    #header .logo a span {
+        color: rgb(0,143,221);
+    }
 #header .logo img {
   max-height: 40px;
 }
