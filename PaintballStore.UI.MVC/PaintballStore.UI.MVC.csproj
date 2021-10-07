@@ -183,6 +183,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\img\about.jpg" />
     <Content Include="Content\img\apple-touch-icon.png" />
@@ -199,6 +200,12 @@
     <Content Include="Content\img\favicon.png" />
     <Content Include="Content\img\features.jpg" />
     <Content Include="Content\img\hero-bg.jpg" />
+    <Content Include="Content\img\paintball\background %282%29.jpg" />
+    <Content Include="Content\img\paintball\download.png" />
+    <Content Include="Content\img\paintball\eclipse.jpg" />
+    <Content Include="Content\img\paintball\empire.png" />
+    <Content Include="Content\img\paintball\gi.jpg" />
+    <Content Include="Content\img\paintball\hkarmy.jpeg" />
     <Content Include="Content\img\portfolio\portfolio-1.jpg" />
     <Content Include="Content\img\portfolio\portfolio-2.jpg" />
     <Content Include="Content\img\portfolio\portfolio-3.jpg" />
@@ -481,6 +488,7 @@
     <Content Include="_Archive\assets\vendor\remixicon\remixicon.woff" />
     <Content Include="_Archive\assets\vendor\remixicon\remixicon.woff2" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Shop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

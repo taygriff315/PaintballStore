@@ -11,10 +11,16 @@ namespace PaintballStore.UI.MVC.Controllers
         }
 
         [HttpGet]
+        public ActionResult Shop()
+        {
+            return View();
+        }
+
+        [HttpGet]
         [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            
 
             return View();
         }
@@ -22,7 +28,7 @@ namespace PaintballStore.UI.MVC.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+           
 
             return View();
         }
