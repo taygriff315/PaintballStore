@@ -238,6 +238,7 @@ header#header.fixed-top {
 }
     .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
         color: rgb(0,143,221);
+        
         background-color: white;
     }
 .navbar .dropdown:hover > ul {
