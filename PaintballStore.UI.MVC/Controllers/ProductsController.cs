@@ -16,6 +16,31 @@ namespace PaintballStore.UI.MVC.Controllers
     {
         private PaintballEntities1 db = new PaintballEntities1();
 
+
+        public ActionResult Shop()
+        {
+            List<Product> products = db.Products.ToList();
+            return View(products);
+        }
+
+        public ActionResult Masks()
+        {
+            var masks = db.Products.Where(x => x.ProductType.ProducTypeName.ToLower() == "masks").ToList();
+            return View(masks);
+        }
+
+        public ActionResult Apparel()
+        {
+            var apparel = db.Products.Where(x => x.ProductType.ProducTypeName.ToLower() == "apparel").ToList();
+            return View(apparel);
+        }
+
+        public ActionResult AirTanks()
+        {
+            var tanks = db.Products.Where(x => x.ProductType.ProducTypeName.ToLower() == "air tank").ToList();
+            return View(tanks);
+        }
+
         // GET: Products
         public ActionResult Index()
         {
@@ -51,17 +76,22 @@ namespace PaintballStore.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,Price,Description,ProductTypeId,ManufacturerId,ProductImage")] Product product, HttpPostedFileBase productImage)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,Price,Description,ProductTypeId,ManufacturerId,ProductImage,ProductImage2,ProductImage3")] Product product, HttpPostedFileBase productImage,HttpPostedFileBase productImage2, HttpPostedFileBase productImage3)
         {
             if (ModelState.IsValid)
             {
                 string file = "noImage.png";
-                if(productImage != null)
+                string fileTwo = "noImage.png";
+                string fileThree = "noImage.png";
+                //string file2 = "noImage.png";
+                //string file3 = "noImage.png";
+                if (productImage != null)
                 {
                     file = productImage.FileName;
+
                     string ext = file.Substring(file.LastIndexOf("."));
                     string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif", ".jfif" };
-                    if(goodExts.Contains(ext.ToLower()))
+                    if (goodExts.Contains(ext.ToLower()))
                     {
                         file = Guid.NewGuid() + ext;
 
@@ -76,8 +106,55 @@ namespace PaintballStore.UI.MVC.Controllers
                         file = "noImage.png";
                     }
                 }
-                product.ProductImage = file;
 
+
+                if (productImage2 != null)
+                {
+                    fileTwo = productImage2.FileName;
+
+                    string ext = fileTwo.Substring(fileTwo.LastIndexOf("."));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif", ".jfif" };
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        fileTwo = Guid.NewGuid() + ext;
+
+                        string savePath = Server.MapPath("~/Content/img/products/");
+                        Image convertedImage = Image.FromStream(productImage2.InputStream);
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+                        ImageServices.ResizeImage(savePath, fileTwo, convertedImage, maxImageSize, maxThumbSize);
+                    }
+                    else
+                    {
+                        file = "noImage.png";
+                    }
+                }
+
+                if (productImage3 != null)
+                {
+                    fileThree = productImage3.FileName;
+
+                    string ext = fileThree.Substring(fileThree.LastIndexOf("."));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif", ".jfif" };
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        fileThree = Guid.NewGuid() + ext;
+
+                        string savePath = Server.MapPath("~/Content/img/products/");
+                        Image convertedImage = Image.FromStream(productImage3.InputStream);
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+                        ImageServices.ResizeImage(savePath, fileThree, convertedImage, maxImageSize, maxThumbSize);
+                    }
+                    else
+                    {
+                        file = "noImage.png";
+                    }
+                }
+
+                product.ProductImage = file;
+                product.ProductImage2 = fileTwo;
+                product.ProductImage3 = fileThree;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,17 +187,19 @@ namespace PaintballStore.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Description,ProductTypeId,ManufacturerId,ProductImage")] Product product,HttpPostedFileBase productImage)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Description,ProductTypeId,ManufacturerId,ProductImage,ProductImage2,ProductImage3")] Product product, HttpPostedFileBase productImage,HttpPostedFileBase productImage2, HttpPostedFileBase productImage3)
         {
             if (ModelState.IsValid)
             {
-                string file="noImage.png";
-                if(productImage != null)
+                string file = "noImage.png";
+                string fileTwo = "noImage.png";
+                string fileThree = "noImage.png";
+                if (productImage != null)
                 {
                     file = productImage.FileName;
                     string ext = file.Substring(file.LastIndexOf("."));
                     string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif", "jfif" };
-                    if(goodExts.Contains(ext.ToLower()) && productImage.ContentLength <= 4194304)
+                    if (goodExts.Contains(ext.ToLower()) && productImage.ContentLength <= 4194304)
                     {
                         file = Guid.NewGuid() + ext;
 
@@ -129,15 +208,58 @@ namespace PaintballStore.UI.MVC.Controllers
                         int maxImageSize = 500;
                         int maxThumbSize = 100;
                         ImageServices.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
-                        if (product.ProductImage != null && product.ProductImage != "noImage.png" )
+                        if (product.ProductImage != null && product.ProductImage != "noImage.png")
                         {
                             string path = Server.MapPath("~/Content/img/products");
                             ImageServices.Delete(path, product.ProductImage);
                         }
                     }
                 }
-                product.ProductImage = file;
+                if (productImage2 != null)
+                {
+                    fileTwo = productImage2.FileName;
+                    string ext = fileTwo.Substring(fileTwo.LastIndexOf("."));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif", "jfif" };
+                    if (goodExts.Contains(ext.ToLower()) && productImage2.ContentLength <= 4194304)
+                    {
+                        fileTwo = Guid.NewGuid() + ext;
 
+                        string savePath = Server.MapPath("~/Content/img/products");
+                        Image convertedImage = Image.FromStream(productImage2.InputStream);
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+                        ImageServices.ResizeImage(savePath, fileTwo, convertedImage, maxImageSize, maxThumbSize);
+                        if (product.ProductImage2 != null && product.ProductImage2 != "noImage.png")
+                        {
+                            string path = Server.MapPath("~/Content/img/products");
+                            ImageServices.Delete(path, product.ProductImage2);
+                        }
+                    }
+                }
+                if (productImage3 != null)
+                {
+                    fileThree = productImage3.FileName;
+                    string ext = fileThree.Substring(fileThree.LastIndexOf("."));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif", "jfif" };
+                    if (goodExts.Contains(ext.ToLower()) && productImage3.ContentLength <= 4194304)
+                    {
+                        fileThree = Guid.NewGuid() + ext;
+
+                        string savePath = Server.MapPath("~/Content/img/products");
+                        Image convertedImage = Image.FromStream(productImage3.InputStream);
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+                        ImageServices.ResizeImage(savePath, fileThree, convertedImage, maxImageSize, maxThumbSize);
+                        if (product.ProductImage3 != null && product.ProductImage3 != "noImage.png")
+                        {
+                            string path = Server.MapPath("~/Content/img/products");
+                            ImageServices.Delete(path, product.ProductImage3);
+                        }
+                    }
+                }
+                product.ProductImage = file;
+                product.ProductImage2 = fileTwo;
+                product.ProductImage3 = fileThree;
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -146,6 +268,7 @@ namespace PaintballStore.UI.MVC.Controllers
             ViewBag.ProductTypeId = new SelectList(db.ProductTypes, "ProductTypeId", "ProducTypeName", product.ProductTypeId);
             return View(product);
         }
+
 
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)

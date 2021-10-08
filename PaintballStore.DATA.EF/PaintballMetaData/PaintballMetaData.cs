@@ -21,9 +21,15 @@ namespace PaintballStore.DATA.EF/*.PaintballMetaData*/
         [StringLength(50,ErrorMessage ="The name cannot contain more than 50 characters")]
         public string ProductName { get; set; }
 
-        [Display(Name ="Image")]
+        [Display(Name ="Main Image")]
         [Required(ErrorMessage ="A photo of the product is required")]
         public string ProductImage { get; set; }
+
+        [Display(Name = "Display Image 1")]
+        public string ProductImage2 { get; set; }
+
+        [Display(Name = "Display Image 2")]
+        public string ProductImage3 { get; set; }
 
         [DisplayFormat(NullDisplayText = "[-N/A-]", DataFormatString = "{0:c}")]
         [Range(0, double.MaxValue, ErrorMessage = "Value must be a valid number. 0 or larger")]

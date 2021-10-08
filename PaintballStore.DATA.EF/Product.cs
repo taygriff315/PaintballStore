@@ -21,6 +21,8 @@ namespace PaintballStore.DATA.EF
         public int ProductTypeId { get; set; }
         public Nullable<int> ManufacturerId { get; set; }
         public string ProductImage { get; set; }
+        public string ProductImage2 { get; set; }
+        public string ProductImage3 { get; set; }
     
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ProductType ProductType { get; set; }

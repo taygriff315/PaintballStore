@@ -53,7 +53,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
                     <li class="dropdown">
-                        <a href="@Url.Action("Shop","Home")"><span>Shop</span> <i class="bi bi-chevron-down"></i></a>
+                        <a href="@Url.Action("Shop","Products")"><span>Shop</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Masks</a></li>
 
@@ -64,7 +64,18 @@
                     </li>
                     <li><a href="#">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li>@Html.ActionLink("Products","Index", "Products")</li>
+              
+                    <li class="dropdown">
+                        <a style="color:white;"><span>Admin</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Index","Products")">Products</a></li>
+                            <li><a href="@Url.Action("Index","Manufacturers")">Manufacturers</a></li>
+                            <li><a href="@Url.Action("Index","ProductTypes")">Product Types</a></li>
+                            <li><a href="@Url.Action("Index","UsersAdmin")">Users</a></li>
+                            <li><a href="@Url.Action("Index","RolesAdmin")">Roles</a></li>
+
+                        </ul>
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

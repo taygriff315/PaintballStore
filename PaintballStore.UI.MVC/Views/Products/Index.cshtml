@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<PaintballStore.DATA.EF.Product>
 
 @{
-    ViewBag.Title = "My Products";
+    ViewBag.Title = "Index";
 }
 <br /><br />
 <br /><br />
-
-<h2>@ViewBag.Title</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,6 +25,12 @@
             @Html.DisplayNameFor(model => model.ProductImage)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ProductImage2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage3)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
         </th>
         <th>
@@ -34,32 +39,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-           <img src="~/Content/img/products/t_@item.ProductImage" alt="Product Image" title="@item.ProductName" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductType.ProducTypeName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+               <img src="~/Content/img/products/t_@item.ProductImage" alt="@item.ProductName" />
+            </td>
+            <td>
+                <img src="~/Content/img/products/t_@item.ProductImage2" alt="@item.ProductName" />
+            </td>
+            <td>
+                <img src="~/Content/img/products/t_@item.ProductImage3" alt="@item.ProductName" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType.ProducTypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
 
 </table>

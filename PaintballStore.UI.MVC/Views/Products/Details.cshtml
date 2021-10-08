@@ -39,7 +39,23 @@
         </dt>
 
         <dd>
-            <img src="~/Content/img/products/@Model.ProductImage" alt="Product Image" title="@Model.ProductImage" />
+            <img src="~/Content/img/products/@Model.ProductImage" alt="@Model.ProductName" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductImage2)
+        </dt>
+
+        <dd>
+            <img src="~/Content/img/products/@Model.ProductImage2" alt="@Model.ProductName" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductImage3)
+        </dt>
+
+        <dd>
+            <img src="~/Content/img/products/@Model.ProductImage3" alt="@Model.ProductName" />
         </dd>
 
         <dt>
