@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PaintballStore.DATA.EF.Product>
+
+@{
+    ViewBag.Title = "My Products";
+}
+<br /><br />
+<br /><br />
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductType.ProducTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+           <img src="~/Content/img/products/t_@item.ProductImage" alt="Product Image" title="@item.ProductName" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductType.ProducTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>

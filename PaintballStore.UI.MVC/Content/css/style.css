@@ -14,8 +14,8 @@ body {
 }
 
 a {
-  color: #ffc451;
-  text-decoration: none;
+    color: rgb(0,143,221);
+    text-decoration: none;
 }
 
 a:hover {

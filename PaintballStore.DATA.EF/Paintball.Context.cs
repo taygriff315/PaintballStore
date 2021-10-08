@@ -13,10 +13,10 @@ namespace PaintballStore.DATA.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PaintballEntities : DbContext
+    public partial class PaintballEntities1 : DbContext
     {
-        public PaintballEntities()
-            : base("name=PaintballEntities")
+        public PaintballEntities1()
+            : base("name=PaintballEntities1")
         {
         }
     

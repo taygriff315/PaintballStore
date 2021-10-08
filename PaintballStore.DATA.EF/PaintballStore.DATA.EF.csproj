@@ -93,32 +93,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="Paintball.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Paintball.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="Paintball.edmx.diagram">
       <DependentUpon>Paintball.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Paintball.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Paintball.Context.cs</LastGenOutput>
       <DependentUpon>Paintball.edmx</DependentUpon>
+      <LastGenOutput>Paintball.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Paintball.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Paintball.edmx</DependentUpon>
       <LastGenOutput>Paintball.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

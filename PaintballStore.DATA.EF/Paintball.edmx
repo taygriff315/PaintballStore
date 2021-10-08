@@ -73,6 +73,7 @@
           <Property Name="Description" Type="varchar" MaxLength="100" />
           <Property Name="ProductTypeId" Type="int" Nullable="false" />
           <Property Name="ManufacturerId" Type="int" />
+          <Property Name="ProductImage" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -278,6 +279,7 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductTypeId" Type="Int32" Nullable="false" />
           <Property Name="ManufacturerId" Type="Int32" />
+          <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Products_Manufacturer" FromRole="Products" ToRole="Manufacturer" />
           <NavigationProperty Name="ProductType" Relationship="Self.FK_Products_ProductType" FromRole="Products" ToRole="ProductType" />
         </EntityType>
@@ -355,7 +357,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="PaintballEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PaintballEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
@@ -390,7 +392,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PaintballModelStoreContainer" CdmEntityContainer="PaintballEntities">
+        <EntityContainerMapping StorageEntityContainer="PaintballModelStoreContainer" CdmEntityContainer="PaintballEntities1">
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="PaintballModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -453,6 +455,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
                 <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

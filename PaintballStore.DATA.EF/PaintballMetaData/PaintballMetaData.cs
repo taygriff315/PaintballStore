@@ -21,6 +21,10 @@ namespace PaintballStore.DATA.EF/*.PaintballMetaData*/
         [StringLength(50,ErrorMessage ="The name cannot contain more than 50 characters")]
         public string ProductName { get; set; }
 
+        [Display(Name ="Image")]
+        [Required(ErrorMessage ="A photo of the product is required")]
+        public string ProductImage { get; set; }
+
         [DisplayFormat(NullDisplayText = "[-N/A-]", DataFormatString = "{0:c}")]
         [Range(0, double.MaxValue, ErrorMessage = "Value must be a valid number. 0 or larger")]
         [Required(ErrorMessage ="The price field is required")]
@@ -29,7 +33,8 @@ namespace PaintballStore.DATA.EF/*.PaintballMetaData*/
         [Required(ErrorMessage = "*Required")]
         [Display(Name = "Description")]
         [StringLength(maximumLength: 100, ErrorMessage = "Description must be less than 100 characters")]
-        public string Desription { get; set; }
+        public string Description { get; set; }
+
 
     }
     [MetadataType(typeof(ProductMetaData))]

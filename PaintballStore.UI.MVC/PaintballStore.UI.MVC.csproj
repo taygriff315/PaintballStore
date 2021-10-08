@@ -170,6 +170,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManufacturersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +184,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\ImageServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\custom.css" />
@@ -204,8 +208,11 @@
     <Content Include="Content\img\paintball\download.png" />
     <Content Include="Content\img\paintball\eclipse.jpg" />
     <Content Include="Content\img\paintball\empire.png" />
+    <Content Include="Content\img\paintball\etha2.jpg" />
     <Content Include="Content\img\paintball\gi.jpg" />
     <Content Include="Content\img\paintball\hkarmy.jpeg" />
+    <Content Include="Content\img\paintball\KCGlory.jpeg" />
+    <Content Include="Content\img\paintball\team.jpg" />
     <Content Include="Content\img\portfolio\portfolio-1.jpg" />
     <Content Include="Content\img\portfolio\portfolio-2.jpg" />
     <Content Include="Content\img\portfolio\portfolio-3.jpg" />
@@ -277,7 +284,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="configs\connections.config" />
+    <Content Include="configs\connections.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="_Archive\assets\css\style.css" />
     <Content Include="_Archive\assets\img\about.jpg" />
     <Content Include="_Archive\assets\img\apple-touch-icon.png" />
@@ -489,9 +498,25 @@
     <Content Include="_Archive\assets\vendor\remixicon\remixicon.woff2" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Manufacturers\Create.cshtml" />
+    <Content Include="Views\Manufacturers\Delete.cshtml" />
+    <Content Include="Views\Manufacturers\Details.cshtml" />
+    <Content Include="Views\Manufacturers\Edit.cshtml" />
+    <Content Include="Views\Manufacturers\Index.cshtml" />
+    <Content Include="Views\ProductTypes\Create.cshtml" />
+    <Content Include="Views\ProductTypes\Delete.cshtml" />
+    <Content Include="Views\ProductTypes\Details.cshtml" />
+    <Content Include="Views\ProductTypes\Edit.cshtml" />
+    <Content Include="Views\ProductTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -499,6 +524,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PaintballStore.DATA.EF\PaintballStore.DATA.EF.csproj">
+      <Project>{cff2ee24-5cb6-4ca9-855b-446f9a4e3002}</Project>
+      <Name>PaintballStore.DATA.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
