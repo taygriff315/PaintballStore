@@ -41,6 +41,42 @@ namespace PaintballStore.UI.MVC.Controllers
             return View(tanks);
         }
 
+        public ActionResult Markers()
+        {
+            var markers = db.Products.Where(x => x.ProductType.ProducTypeName.ToLower() == "markers").ToList();
+            return View(markers);
+        }
+
+        public ActionResult Dye()
+        {
+            var dye = db.Products.Where(x => x.Manufacturer.ManufacturerName.ToLower() == "dye").ToList();
+            return View(dye);
+        }
+
+        public ActionResult Eclipse()
+        {
+            var eclipse = db.Products.Where(x => x.Manufacturer.ManufacturerName.ToLower() == "eclipse").ToList();
+            return View(eclipse);
+        }
+
+        public ActionResult HKArmy()
+        {
+            var hkArmy = db.Products.Where(x => x.Manufacturer.ManufacturerName == "HK Army").ToList();
+            return View(hkArmy);
+        }
+
+        public ActionResult Empire()
+        {
+            var empire = db.Products.Where(x => x.Manufacturer.ManufacturerName.ToLower() == "empire").ToList();
+            return View(empire);
+        }
+
+        public ActionResult GISportz()
+        {
+            var giSportz = db.Products.Where(x => x.Manufacturer.ManufacturerName == "G.I. Sportz").ToList();
+            return View(giSportz);
+        }
+
         // GET: Products
         public ActionResult Index()
         {

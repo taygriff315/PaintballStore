@@ -6,3 +6,18 @@
 .cardContainer {
     display: inline-block;
 }
+
+.inputs {
+    width: 15rem;
+}
+
+.form-box {
+    margin-left: 2rem;
+    
+}
+
+.form-container {
+    background-image: url('../img/paintball/KCGlory (2).jpeg');
+    background-size: cover;
+}
+

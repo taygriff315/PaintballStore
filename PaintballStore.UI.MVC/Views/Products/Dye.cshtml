@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PaintballStore.DATA.EF.Product>
+
+@{
+    ViewBag.Title = "Dye";
+}
+
+<br /><br />
+<br /><br />
+<h2>Dye</h2>
+
+<div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card col-md-3" style="width: 20rem;">
+                <div class="other-border">
+                    <a href="@Url.Action("Details","Products", new { id=item.ProductId})"> <img style="width:15rem;" src="~/Content/img/products/@item.ProductImage " alt="Product Image" title="@item.Manufacturer.ManufacturerName @item.ProductName" /></a>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ProductName</h5>
+                        <hr />
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-info">@item.ProductType.ProducTypeName</p>
+
+                        <a href="@Url.Action("Details","Products", new { id=item.ProductId})" class="btn btn-primary">Buy</a>
+                        <span class="price">  @Html.DisplayFor(modelItem => item.Price)</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
